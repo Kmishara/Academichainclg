@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined" id="menu">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined" id="search">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined" id="notifications"
+            >notifications</span
+          >
+          <span class="material-icons-outlined" id="email">email</span>
+          <span class="material-icons-outlined" id="profile"
+            >account_circle</span
+          >
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand"><span class=""></span> AcedemiChain</div>
+          <span
+            class="material-icons-outlined"
+            id="close"
+            onclick="closeSidebar()"
+            >close</span
+          >
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item" onclick="showSection('dashboard')">
+            <span class="material-icons-outlined">dashboard</span> Dashboard
+          </li>
+
+          <!-- ============================== -->
+
+          <li class="sidebar-list-item dropdown">
+            <a href="#" onclick="toggleDropdown(event)">
+              <span class="material-icons-outlined">groups</span> Add Student
+            </a>
+            <ul class="dropdown-menu">
+              <li onclick="showSection('first-sem')">First Semester</li>
+              <li onclick="showSection('final-year')">Final Year</li>
+            </ul>
+          </li>
+
+          <!-- =========================================== -->
+
+          <li class="sidebar-list-item" onclick="showSection('filter')">
+            <span class="material-icons-outlined">category</span> Filter
+          </li>
+          <li
+            class="sidebar-list-item"
+            onclick="showSection('student-details')"
+          >
+            <span class="material-icons-outlined">fact_check</span> <a href="/feed">Student</a>
+          </li>
+          <li class="sidebar-list-item" onclick="showSection('check-status')">
+            <span class="material-icons-outlined">poll</span> Check Status
+          </li>
+          <li class="sidebar-list-item" onclick="showSection('settings')">
+            <span class="material-icons-outlined">settings</span> Settings
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">logout</span> Logout
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <section id="dashboard" class="content-section">
+          <div class="main-title"><h2>DASHBOARD</h2></div>
+          <div class="main-cards">
+            <div class="card">
+              <div class="card-inner">
+                <h3>Total Students</h3>
+                <span class="material-icons-outlined">groups</span>
+              </div>
+              <h1 id="total-students">Loading...</h1>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <h3>Today Present</h3>
+                <span class="material-icons-outlined">front_hand</span>
+              </div>
+              <h1>54</h1>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <h3>Passing Ratio</h3>
+                <span class="material-icons-outlined">school</span>
+              </div>
+              <h1>80%</h1>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <h3>Fail Ratio</h3>
+                <span class="material-icons-outlined"
+                  >notification_important</span
+                >
+              </div>
+              <h1>20%</h1>
+            </div>
+          </div>
+          <div class="charts">
+            <div class="charts-card">
+              <h2 class="chart-title">Status</h2>
+              <div id="bar-chart"></div>
+            </div>
+            <div class="charts-card">
+              <h2 class="chart-title">Monthly Status</h2>
+              <div id="area-chart"></div>
+            </div>
+          </div>
+        </section>
+        <section id="first-sem" class="content-section" style="display: none">
+          <h2>First Semester</h2>
+          <form action="/add" method="POST" id="add-student-form">
+            <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" name="name"  placeholder="Username" required>
+          </div>
+          <div class="form-group">
+              <label for="mail">Email</label>
+              <input type="email" name="mail" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+              <label for="enroll">Enrollment Number</label>
+              <input type="text" name="enroll"  placeholder="Enrollment Number" required>
+          </div>
+          <div class="form-group">
+              <label for="semester">Semester</label>
+              <input type="number" name="semester" placeholder="Semester" required>
+          </div>
+          <!-- <button type="submit" id="submit-btn">Submit</button> -->
+            <input type="submit" id="submit-btn" placeholder="submit" name="submit">
+          </form>
+    
+        </section>
+
+        <!-- =======Final Year========= -->
+        <section id="final-year" class="content-section" style="display: none">
+          <h2>Final Year</h2>
+          <p>Form for final year students...</p>
+        </section>
+
+        
+        <!-- =======Filter========= -->
+        <section id="filter" class="content-section" style="display: none">
+          <h2>Filter</h2>
+          <p>Filter options here...</p>
+        </section>
+
+        <!-- =======Student Details========= -->
+        <!-- <section
+       
+          id="student-details"
+          class="content-section"
+          style="display: none"
+        >
+        <a  >Students  </a>
+       
+     
+          
+        </section> -->
+        <!-- <a
+        id="student-details"
+        class="content-section"
+        style="display: none"
+        href="/feed" 
+      >
+       Students
+      </a> -->
+        <!-- =======Check Status========= -->
+        <section
+          id="check-status"
+          class="content-section"
+          style="display: none"
+        >
+        <form id="searchForm" method="get" action="/search" >
+          <input type="text" name="enroll" id="enroll" placeholder="Enter enrollment number" required />
+          <button type="submit">Search</button>
+        </form>
+        
+        <!-- Table to display student details -->
+        <table id="studentTable" border="1" style="display: none; margin-top: 20px;">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Enrollment Number</th>
+              <th>Semester</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="name" readonly /></td>
+              <td><input type="email" id="mail" readonly /></td>
+              <td><input type="text" id="enrollDisplay" readonly /></td>
+              <td><input type="number" id="semester" readonly /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        </section>
+
+        <!-- =======Settings========= -->
+        <section id="settings" class="content-section" style="display: none">
+          <h2>Settings</h2>
+          <p>Settings options...</p>
+        </section>
+      </main>
+      <!-- End Main -->
+
+     
+    </div>
+
+    <!-- Scripts -->
+     <!-- js for add student -->
+    <!-- <script>
+      // Fetch total students from the server
+      async function fetchTotalStudents() {
+        try {
+          const response = await fetch('/api/students/total'); // Fetch the total from the backend
+          const data = await response.json();
+  
+          if (response.ok) {
+            // Update the total students count in the UI
+            document.getElementById('total-students').textContent = `${data.totalStudents} Registered Students`;
+          } else {
+            console.error('Error fetching total students:', data.message);
+            document.getElementById('total-students').textContent = 'Error loading data';
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          document.getElementById('total-students').textContent = 'Error loading data';
+        }
+      }
+  
+      // Fetch total students when the page loads
+      fetchTotalStudents();
+    </script> -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/dashboard.js"></script>
+    <!-- js for hide -->
+    <script>
+      function showSection(sectionId) {
+        document.querySelectorAll(".content-section").forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(sectionId).style.display = "block";
+      }
+    </script>
+
+<!-- js for searching -->
+<script>
+  const searchForm = document.getElementById("searchForm");
+  const studentTable = document.getElementById("studentTable");
+  
+
+  // Event listener for searching student details
+  searchForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const enroll = document.getElementById("enroll").value;
+
+    try {
+      const response = await fetch(`/search?enroll=${enroll}`);
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      const student = await response.json();
+
+      // Populate the table with student details
+      document.getElementById("name").value = student.name;
+      document.getElementById("mail").value = student.mail;
+      document.getElementById("enrollDisplay").value = student.enroll;
+      document.getElementById("semester").value = student.semester;
+
+      // Show the table and update form
+      studentTable.style.display = "table";
+      document.getElementById("enroll").value = "";
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  });
+
+  
+
+</script>
+
+  <!-- js for fetching all students -->
+<script>
+  // Function to fetch total students
+  async function fetchTotalStudents() {
+      try {
+          const response = await fetch('/total-students'); // API endpoint to get total students
+          if (!response.ok) {
+              throw new Error(await response.text());
+          }
+
+          const data = await response.json();
+          document.getElementById('total-students').textContent = data.total; // Update the count in the UI
+      } catch (error) {
+          console.error('Error fetching total students:', error.message);
+          document.getElementById('total-students').textContent = 'Error!';
+      }
+  }
+
+  // Call the function when the page loads
+  window.onload = fetchTotalStudents;
+</script>
+
+    <!-- js for succes alert -->
+    <!-- <script>
+      // Check if the URL contains a success parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('success')) {
+        alert('Student added successfully');
+      }
+    </script> -->
+
+      </body>
+</html>

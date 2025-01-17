@@ -1,0 +1,82 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1d2634;
+    color: #9e9ea4;
+    margin: 0;
+    padding: 20px;
+    /* //color: #333; */
+  }
+  
+  /* Table styling */
+  table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table head styling */
+  thead {
+    background-color: #2b61b9;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  thead th {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Table body styling */
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  tbody td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  /* Zebra striping for table rows */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Hover effect on rows */
+  tbody tr:hover {
+    background-color: #f1f5ff;
+    color: #000;
+  }
+  
+  /* No students found row styling */
+  tbody tr td[colspan="5"] {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #888;
+    padding: 20px;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    table {
+      width: 100%;
+    }
+  
+    thead th {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    tbody td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
