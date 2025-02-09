@@ -1,21 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const {addstudentsUser,getTotalStudents} = require("../controllers/studentControllers");
-const Student = require("../models/studentModel")
+const {addstudentsUser,getTotalStudents,} = require("../controllers/studentControllers");
+
+const Student = require("../models/studentModel");
+const upload = require("../utilis/multer");
 const path = require('path');
+router.get('/dashboard', async(req, res) => {
+  
+  res.render(path.join(__dirname, '../views', 'dashboard.ejs')); });
+ 
+
+
 router.get('/dashboard', async(req, res) => {
     //res.render(path.join(__dirname, '../views', 'dashboard.ejs')); 
      try {
       const students = await Student.find(); // Fetch students from the database
-      res.render(path.join(__dirname, '../views', 'dashboard.ejs',{students}));  // Pass the students to the view
+      res.render(path.join(__dirname, '../views', 'dashboard.ejs',{students})); 
+      
   } catch (error) {
       console.error('Error fetching students:', error.message);
       res.status(500).send('Failed to load dashboard.');
   }
   });
-router.post('/add', addstudentsUser);
+router.post('/add',upload.single("profilepic"), addstudentsUser);
 
-  router.get('/add', (req, res) => {
+router.get('/add', (req, res) => {
    res.render(path.join(__dirname, '../views', 'dashboard.ejs'));
   // res.send('GET request to /add successful')
   });
@@ -56,6 +65,25 @@ router.get('/total-students', async (req, res) => {
   } catch (error) {
       console.error('Error fetching total students:', error.message);
       res.status(500).json({ message: 'Failed to fetch total students' });
+  }
+});
+router.get('/filter', (req, res) => {
+  res.render('filter', { student: null, error: null });
+});
+router.post('/filter', async (req, res) => {
+  try {
+    const { enroll } = req.body;
+    const student = await Student.findOne({ enroll });
+
+    if (!student) {
+      return res.render('filter', { student: null, error: 'Student not found' });
+    }
+
+    const isWeak = student.marks < 5;
+    const isAvg = student.marks >= 5 && student.marks < 8;
+    res.render('filter', { student, isWeak, isAvg, error: null });
+  } catch (err) {
+    res.render('filter', { student: null, error: 'An error occurred' });
   }
 });
 

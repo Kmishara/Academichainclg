@@ -44,15 +44,16 @@ body {
   }
   
   /* Zebra striping for table rows */
-  tbody tr:nth-child(even) {
+  tbody tr {
     background-color: #f9f9f9;
+    color: #000;
   }
   
   /* Hover effect on rows */
-  tbody tr:hover {
+  /* tbody tr:hover {
     background-color: #f1f5ff;
     color: #000;
-  }
+  } */
   
   /* No students found row styling */
   tbody tr td[colspan="5"] {
@@ -62,7 +63,11 @@ body {
     color: #888;
     padding: 20px;
   }
-  
+  #userprofilepic{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
   /* Responsive design for smaller screens */
   @media (max-width: 600px) {
     table {

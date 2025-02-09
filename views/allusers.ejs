@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="/css/allusers.css">
 </head>
 <body>
-    <table>
+
+    
+    <table id="tablerender">
 <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Enrollment Number</th>
               <th>Semester</th>
+              <th>personal Phone Number</th>
+              <th>parents Phone Number</th>
+              <th>C.G.P.A.</th>
+              <th>Profile pic</th>
             </tr>
           </thead>
     <tbody>
@@ -24,6 +30,12 @@
                     <td><%= user.mail %></td>
                     <td><%= user.enroll %></td>
                      <td><%= user.semester %></td>
+                     <td><%= user.prsnlphn %></td>
+                     <td><%= user.parentsphn %></td>
+                     <td><%= user.marks %></td>
+                    <td ><img id="userprofilepic" src="/images/uploads/<%=user.profilepic %>" alt=""></td> 
+
+                     <!-- <td><%=user.profilepic %></td> -->
                     </tr>
             <% }); %>
         <% } else { %>

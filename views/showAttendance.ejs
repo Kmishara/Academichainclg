@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Attendance Records</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1>Attendance Records</h1>
+    
+        <% if (attendanceRecords.length === 0) { %>
+            <p>No attendance records found.</p>
+        <% } else { %>
+            <% attendanceRecords.forEach(record => { %>
+                <div class="attendance-record">
+                    <h2>Course: <%= record.course %></h2>
+                    <p>Date: <%= new Date(record.date).toLocaleDateString() %></p>
+                    <h3>Students:</h3>
+                    <ul>
+                        <% record.students.forEach(student => { %>
+                            <li><strong><%= student.enroll %></strong>: <%= student.status %></li>
+                        <% }); %>
+                    </ul>
+                    <hr>
+                </div>
+            <% }); %>
+        <% } %>
+    </body>
+    </html>
+    
+     
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+</head>
+<body>
+    <h1>Attendance Records</h1>
+
+    <% if (attendanceRecords.length === 0) { %>
+        <p>No attendance records found.</p>
+    <% } else { %>
+        <% attendanceRecords.forEach(record => { %>
+            <div class="attendance-record">
+                <h2>Course: <%= record.course %></h2>
+                <p>Date: <%= new Date(record.date).toLocaleDateString() %></p>
+                <h3>Students:</h3>
+                <ul>
+                    <% record.students.forEach(student => { %>
+                        <li>
+                            <strong><%= student.enroll %> (<%= student.enroll %>)</strong>:
+                            <%= student.status %>
+                        </li>
+                    <% }); %>
+                </ul>
+                <hr>
+            </div>
+        <% }); %>
+    <% } %>
+</body>
+</html>
