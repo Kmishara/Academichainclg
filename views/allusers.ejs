@@ -15,10 +15,19 @@
               <th>Name</th>
               <th>Email</th>
               <th>Enrollment Number</th>
+              <th>Branch</th>
+              <th>Course</th>
               <th>Semester</th>
               <th>personal Phone Number</th>
               <th>parents Phone Number</th>
-              <th>C.G.P.A.</th>
+              <th>I S.G.P.A</th>
+              <th>II S.G.P.A</th>
+              <th>III S.G.P.A</th>
+              <th>IV S.G.P.A</th>
+              <th>V S.G.P.A</th>
+              <th>VI S.G.P.A</th>
+              <th>VII S.G.P.A</th>
+              <th>VIII C.G.P.A.</th>
               <th>Profile pic</th>
             </tr>
           </thead>
@@ -29,9 +38,18 @@
                    <td><%= user.name %></td>
                     <td><%= user.mail %></td>
                     <td><%= user.enroll %></td>
+                    <td><%= user.Branch %></td>
+                    <td><%= user.Course %></td>
                      <td><%= user.semester %></td>
                      <td><%= user.prsnlphn %></td>
                      <td><%= user.parentsphn %></td>
+                     <td><%= user.firstSem %></td>
+                     <td><%= user.secSem %></td>
+                     <td><%= user.thirdSem %></td>
+                     <td><%= user.fourthSem %></td>
+                     <td><%= user.fifthSem %></td>
+                     <td><%= user.sixthSem %></td>
+                     <td><%= user.seventhSem %></td>
                      <td><%= user.marks %></td>
                     <td ><img id="userprofilepic" src="/images/uploads/<%=user.profilepic %>" alt=""></td> 
 

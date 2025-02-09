@@ -5,11 +5,17 @@ const Student = require("../models/studentModel");
 exports.addstudentsUser = async (req, res) => {
   
     try {
-        const { name, mail, semester, enroll, prsnlphn, parentsphn, marks,  } = req.body;
+        const { name, mail, semester,Branch,Course, enroll, prsnlphn, parentsphn, marks, firstSem,
+        secSem,
+        thirdSem,
+        fourthSem,
+        fifthSem,
+        sixthSem,
+        seventhSem }= req.body;
         
        
         // Validate input fields
-        if (!name || !mail || !semester || !enroll || !prsnlphn || !parentsphn || !marks || !req.file) {
+        if (!name || !mail || !semester || !enroll || !Branch || !Course || !prsnlphn || !parentsphn || !firstSem ||!secSem || !thirdSem || !fourthSem ||!fifthSem ||!sixthSem || !seventhSem || !marks || !req.file) {
           return res.status(400).json({ message: "All fields are required." });
         }
         
@@ -29,10 +35,18 @@ exports.addstudentsUser = async (req, res) => {
           name,
           mail,
           semester,
+          Branch,Course,
           enroll,
           prsnlphn,
           parentsphn,
           marks,
+          firstSem,
+        secSem,
+        thirdSem,
+        fourthSem,
+        fifthSem,
+        sixthSem,
+        seventhSem,
           profilepic:req.file.filename,
         });
     
