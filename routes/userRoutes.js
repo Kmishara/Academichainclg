@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/userModels')
+
 const {registerUser,loginUser,getUserProfile,updateUserProfile} = require("../controllers/userControllers")
 const path = require('path');
 router.post('/register', registerUser);
@@ -10,11 +12,10 @@ router.get('/login', (req, res) => {
   router.get('/register', (req, res) => {
     res.render(path.join(__dirname, '../views', 'index.ejs'));
   });
-  router.get('/Profile',function(req,res,next){
+  // router.get('/Profile',function(req,res,next){
 
-    res.render(path.join(__dirname, '../views', 'Profile.ejs'));
+  //   res.render(path.join(__dirname, '../views', 'Profile.ejs'));
    
-   });
-  
+  //  });
 
 module.exports = router;

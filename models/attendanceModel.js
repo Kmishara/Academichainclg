@@ -12,7 +12,7 @@ const attendanceSchema = new mongoose.Schema({
     // ],
     students: [
         {
-            enroll: { type: mongoose.Schema.Types.ObjectId, ref: 'studentSchema', }, // Reference to Enroll schema
+            enroll: { type: String, required: true }, // Reference to Enroll schema
             status: { type: String, enum: ['Present', 'Absent'], required: true },
         },
     ],

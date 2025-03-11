@@ -1,5 +1,8 @@
 const User = require("../models/userModels");
 const bcrypt = require("bcrypt");
+const{jwtAuthMiddlware,generateToken} = require('../utilis/jwt');
+require("dotenv").config();
+
 // Register User
 exports.registerUser = async (req, res) => {
   try {
@@ -20,7 +23,14 @@ exports.registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
-await newUser.save();
+const response = await newUser.save();
+const payload = {
+  id:response.id,
+  username:response.username
+}
+console.log(JSON.stringify(payload));
+const token = generateToken(payload);
+console.log("Token is :",token);
 res.redirect('./login')
   } catch (error) {
     console.error("Registration error:", error.message);
@@ -32,16 +42,24 @@ res.redirect('./login')
 exports.loginUser = async (req, res) => {
   try {
     const { password, username } = req.body;
-    const usser = await User.findOne({username});
-  if (!usser) {
+    const user = await User.findOne({username});
+  if (!user) {
     return res.status(400).json({ message: "invalid useraname" });
   }
     // Compare the hashed password
-    const isMatch = await bcrypt.compare(password, usser.password);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     } 
-  res.render('dashboard', { user: usser});
+  //  req.session.user = { _id: user._id, username: user.username, email: user.email };
+
+  const payload = {
+    id : user.id,
+    username:user.username
+  }
+  const token = generateToken(payload)
+  console.log(token)
+  res.render('dashboard', { user: user});
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server error. Please try again later." });
