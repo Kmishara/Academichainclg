@@ -30,6 +30,7 @@ router.get("/add", (req, res) => {
   // res.send('GET request to /add successful')
 });
 
+
 router.get("/feed", function (req, res, next) {
   Student.find().then(function (allusers) {
     res.render("allusers", { allusers });

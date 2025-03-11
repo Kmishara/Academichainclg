@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
   
-
+  
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/dashboard.css" />
-  <link rel="stylesheet" href="/css/card.css">
+ 
     <link rel="stylesheet" href="/css/allusers.css">
 </head>
 <body>
     <header class="header">
-     <a href="">attendance</a>
-     <a href="/Profile">show-attendance</a>
-     <a href="/dashboard">dashboard</a>
-     <a href="/views/filter.ejs">filter</a>
+        <a href="/dashboard">dashboard</a>
+       
+     <a href="/attendance">attendance</a>
+     <a href="/show-attendance">show-attendance</a>
+     <a href="/Profile">update-profile</a>
+     <a href="/feed">details</a>
+     <a href="/filter">filter</a>
       </header>
       <!-- End Header -->
 
 
      
-    <table id="tablerender">
+    <table id="tablerender" >
 <thead>
             <tr>
               <th>Name</th>
@@ -45,43 +47,6 @@
               <th>Actions</th> <!-- Added column for buttons -->
             </tr>
           </thead>
-    <!-- <tbody>
-        <% if (allusers && allusers.length > 0) { %>
-            <% allusers.forEach(function(user){%>
-                <tr>
-                   <td><%= user.name %></td>
-                    <td><%= user.mail %></td>
-                    <td><%= user.enroll %></td>
-                    <td><%= user.Branch %></td>
-                    <td><%= user.Course %></td>
-                     <td><%= user.semester %></td>
-                     <td><%= user.prsnlphn %></td>
-                     <td><%= user.parentsphn %></td>
-                     <td><%= user.firstSem %></td>
-                     <td><%= user.secSem %></td>
-                     <td><%= user.thirdSem %></td>
-                     <td><%= user.fourthSem %></td>
-                     <td><%= user.fifthSem %></td>
-                     <td><%= user.sixthSem %></td>
-                     <td><%= user.seventhSem %></td>
-                     <td><%= user.marks %></td>
-                    <td ><img id="userprofilepic" src="/images/uploads/<%=user.profilepic %>" alt=""></td> 
-                    <td>
-                        <button class="update-btn">Update</button>
-                        <button class="delete-btn">Delete</button>
-                    </td>
-                    
-                    </tr>
-
-                    
-            <% }); %>
-        <% } else { %>
-            <tr>
-                <td colspan="5">No students found.</td>
-            </tr>
-        <% } %>
-    </tbody> -->
-   
 
 
 
@@ -191,6 +156,9 @@
 });
 
 </script>
+
+
+
 
 </body>
 </html>

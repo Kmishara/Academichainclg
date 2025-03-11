@@ -17,5 +17,10 @@ router.get('/login', (req, res) => {
   //   res.render(path.join(__dirname, '../views', 'Profile.ejs'));
    
   //  });
-
+  router.get('/dashboard', (req, res) => {
+    // Assuming you store the user information in req.user (after successful login)
+    const user = req.user || null; // If user is not logged in, set it to null
+  
+    res.render('dashboard', { user });
+  });
 module.exports = router;

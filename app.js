@@ -18,9 +18,11 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/Profile',updateRouter);
 app.use('/',updateRouter);
-app.use('/dashboard',studentRouter);
+app.use('/search',studentRouter)
+//app.use('/dashboard',studentRouter);
 app.use('/students',studentRouter);
 app.use('/update/:id',studentRouter);
+app.use('/dashboard',indexRouter);
 app.use('/',studentRouter)
 app.use('/',attendanceRoutes)
 app.get('/', function(req, res, next) {

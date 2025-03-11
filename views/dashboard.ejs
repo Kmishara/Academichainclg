@@ -103,11 +103,9 @@
 
           <!-- ============================== -->
 
-          <li class="sidebar-list-item dropdown">
-            <a href="#" onclick="showSection('first-sem')">
+          <li class="sidebar-list-item dropdown"
+            onclick="showSection('first-sem')">
               <span class="material-icons-outlined">groups</span> Add Student
-            </a>
-           
           </li>
 
           <!-- =========================================== -->
@@ -119,8 +117,7 @@
             class="sidebar-list-item"
             onclick="showSection('student-details')"
           >
-          <a href="/feed"><span class="material-icons-outlined"  >fact_check</span>Student Details</a>
-             
+          <a href="/feed"><span class="material-icons-outlined">fact_check</span>Student Details</a>      
           </li>
           <li class="sidebar-list-item" onclick="showSection('check-status')">
             <span class="material-icons-outlined">poll</span> Search
@@ -456,15 +453,6 @@
   // Call the function when the page loads
   window.onload = fetchTotalStudents;
 </script>
-
-    <!-- js for succes alert -->
-    <!-- <script>
-      // Check if the URL contains a success parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('success')) {
-        alert('Student added successfully');
-      }
-    </script> -->
     
       </body>
 </html>
