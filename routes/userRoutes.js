@@ -23,4 +23,5 @@ router.get('/login', (req, res) => {
   
     res.render('dashboard', { user });
   });
+  
 module.exports = router;

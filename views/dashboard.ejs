@@ -20,6 +20,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/dashboard.css" />
     <link rel="stylesheet" href="/css/card.css">
+   
     <style>
       .sub-menu-warp {
         display: none;
@@ -55,10 +56,10 @@
           <div class="user-info">
             <img src="/images/simple-user-default-icon-free-png.webp"  />
             <% if (user) { %> 
-              <h1><%= user.username %></h1>
-            <% } else { %>
-              <p>No user information available.</p>
-            <% } %>
+              <h1>Welcome, <%= user.username %>!</h1>
+          <% } else { %>
+              <p>No user </p>
+          <% } %>
           </div>
           <hr />
           <a href="./Profile" class="sub-menu-link">

@@ -57,9 +57,15 @@ exports.loginUser = async (req, res) => {
     id : user.id,
     username:user.username
   }
+  console.log(payload)
   const token = generateToken(payload)
   console.log(token)
-  res.render('dashboard', { user: user});
+  req.session.userId = { _id: user._id,
+    username: user.username,
+  };
+  console.log(user.username);
+//  res.redirect("/dashboard",)
+ res.render('dashboard', { user: user});
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server error. Please try again later." });
